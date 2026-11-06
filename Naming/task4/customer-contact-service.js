@@ -2,15 +2,17 @@ const CustomerContact = require('./thirdparty/customer-contact');
 const CustomerContactDAO = require('./thirdparty/customer-contact-dao');
 
 module.exports = class CustomerContactService {
-    constructor(customerContactDAO: CustomerContactDAO) {
+    /** @param {CustomerContactDAO} customerContactDAO */
+    constructor(customerContactDAO) {
         this.customerContactDAO = customerContactDAO;
     }
 
-    findCustomerContactDetailsByCustomerId(customerId) {
+    findContactDetailsByCustomerId(customerId) {
         return this.customerContactDAO.findById(customerId);
     }
 
-    updateCustomerContactDetails(customerContactDetails: CustomerContact) {
+    /** @param {CustomerContact} customerContactDetails */
+    updateContactDetails(customerContactDetails) {
         this.customerContactDAO.update(customerContactDetails);
     }
 };

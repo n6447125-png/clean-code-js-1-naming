@@ -1,11 +1,11 @@
 const os = require('os');
 
-const PLUS = '+';
-const PIPE = '|';
-const MINUS = '-';
-const UNDERSCORE = ' _ ';
+const CORNER = '+';
+const VERTICAL_BORDER = '|';
+const HORIZONTAL_BORDER = '-';
+const KEY_VALUE_SEPARATOR = ' _ ';
 
-function repeat(symbol, times) {
+function repeatSymbol(symbol, times) {
     let result = '';
     for (let i = 0; i < times; i++) {
         result += symbol;
@@ -13,18 +13,18 @@ function repeat(symbol, times) {
     return result;
 }
 
-function formatKyeValue(key, value) {
-    const content = key + UNDERSCORE + value;
-    const minuses = repeat(MINUS, content.length);
+function formatKeyValue(key, value) {
+    const content = key + KEY_VALUE_SEPARATOR + value;
+    const horizontalLine = repeatSymbol(HORIZONTAL_BORDER, content.length);
 
-    return PLUS + minuses + PLUS + os.EOL
-         + PIPE + content + PIPE + os.EOL
-         + PLUS + minuses + PLUS + os.EOL;
+    return CORNER + horizontalLine + CORNER + os.EOL
+         + VERTICAL_BORDER + content + VERTICAL_BORDER + os.EOL
+         + CORNER + horizontalLine + CORNER + os.EOL;
 }
 
 function main() {
-    console.log(formatKyeValue('enable', 'true'));
-    console.log(formatKyeValue('name', 'Bob'));
+    console.log(formatKeyValue('enable', 'true'));
+    console.log(formatKeyValue('name', 'Bob'));
 }
 
 main();
